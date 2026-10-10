@@ -6,6 +6,7 @@
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { createRequire } from "node:module";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { runHookCommand } from "../../src/cli/hook.js";
 import { readStore } from "../../src/connect/fpstore.js";
@@ -246,6 +247,9 @@ function distIsFresh(): boolean {
   return sources.every((s) => statSync(s).mtimeMs <= built);
 }
 
+// The module tracer below uses node:module registerHooks(), added in Node 22.15 / 23.5. On older Node (e.g. the
+// Node 20 CI leg) it is absent, so the --import tracer would crash the child; skip just that isolation check there.
+const HAS_REGISTER_HOOKS = typeof createRequire(import.meta.url)("node:module").registerHooks === "function";
 const BUNDLE = join(REPO_ROOT, "test", "connect", `.e2e-bundle-${process.pid}`);
 const TRACE = join(BUNDLE, "trace.mjs");
 
@@ -287,7 +291,7 @@ describe("hooks: end to end (secor hook … as Claude Code runs it)", () => {
     return { stdout: r.stdout, status: r.status, ms: Date.now() - started };
   }
 
-  it("asks on a planted secret, exits 0, and loads neither tree-sitter, commander nor the MCP SDK", () => {
+  it.skipIf(!HAS_REGISTER_HOOKS)("asks on a planted secret, exits 0, and loads neither tree-sitter, commander nor the MCP SDK", () => {
     expect(built).toBe(true);
     const env = tempEnv();
     try {
