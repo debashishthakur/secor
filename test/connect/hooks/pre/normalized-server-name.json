@@ -1,0 +1,35 @@
+{
+  "description": "Configured name my.server appears as mcp__my_server__\u2026: resolved to the managed my.server",
+  "scopes": "version: 1\nservers:\n  my.server:\n    tools: [get.item]\n",
+  "managed": [
+    "my.server"
+  ],
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__my_server__get_item",
+        "tool_input": {
+          "id": "7"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "pass",
+            "server": "my.server",
+            "tool": "get_item",
+            "codes": []
+          }
+        ]
+      }
+    }
+  ]
+}

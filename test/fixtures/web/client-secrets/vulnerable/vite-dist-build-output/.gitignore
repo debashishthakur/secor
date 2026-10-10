@@ -1,0 +1,2 @@
+# keep this fixture's build output in the repo (the root .gitignore ignores dist/)
+!dist/

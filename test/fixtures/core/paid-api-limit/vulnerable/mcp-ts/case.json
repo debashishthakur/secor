@@ -1,0 +1,1 @@
+{ "rule": "core/paid-api-limit", "expect": [ { "severity": "high", "file": "src/server.ts", "line": 9 } ] }

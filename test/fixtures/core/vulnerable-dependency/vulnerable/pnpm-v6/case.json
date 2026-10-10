@@ -1,0 +1,11 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "pnpm-lock.yaml",
+      "line": 23
+    }
+  ],
+  "net": "net.json"
+}

@@ -1,0 +1,19 @@
+// SECOR test for web/cookie-flags (Express + supertest): the session cookie must carry HttpOnly, Secure and SameSite.
+{{?vitest}}import { describe, expect, it } from "vitest";
+{{?jest}}import { describe, expect, it } from "@jest/globals";
+import request from "supertest";
+// TODO(secor): export the Express app from this module without calling listen(), so supertest can use it.
+import app from "{{importPath}}";
+
+describe("{{method}} {{path}} session cookie", () => {
+  it("sets HttpOnly, Secure and SameSite on the session cookie", async () => {
+    // TODO(secor): replace :params in the path and send the credentials or body this route needs to set the cookie.
+    const res = await request(app)["{{method}}".toLowerCase() as "post"]("{{path}}");
+    const raw: unknown = res.headers["set-cookie"];
+    const setCookie = (Array.isArray(raw) ? raw : raw ? [String(raw)] : []).join("\n");
+    expect(setCookie).not.toBe("");
+    expect(setCookie).toMatch(/;\s*HttpOnly/i);
+    expect(setCookie).toMatch(/;\s*Secure/i);
+    expect(setCookie).toMatch(/;\s*SameSite=(Lax|Strict|None)/i);
+  });
+});

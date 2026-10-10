@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use SECOR in research or teaching, please cite it as below."
+title: "SECOR: a local security context orchestrator for AI-built services and MCP connections"
+type: software
+authors:
+  - family-names: Thakur
+    given-names: Debashish
+repository-code: "https://github.com/debashishthakur/secor"
+license: Apache-2.0
+version: 1.0.0
+date-released: "2026-10-10"
+keywords:
+  - model context protocol
+  - application security
+  - static analysis
+  - mcp security
+  - secret scanning
+  - developer tooling

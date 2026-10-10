@@ -1,0 +1,21 @@
+// SECOR test for api/missing-ownership: {{method}} {{path}}
+// User B requesting user A's record must get 403 or 404.
+{{?vitest}}import { describe, expect, it } from "vitest";
+{{?jest}}import { describe, expect, it } from "@jest/globals";
+import request from "supertest";
+// TODO(secor): export the Express app from this module without calling app.listen(), so supertest can use it.
+import { {{handlerExport}} as app } from "{{importPath}}";
+
+// TODO(secor): create a record owned by user A, and sign in as user B (for example with a test token).
+const recordOfUserA = "TODO-record-id-of-user-A";
+const userBAuthorization = "Bearer TODO-token-of-user-B";
+
+describe("api/missing-ownership: {{method}} {{path}}", () => {
+  it("returns 403 or 404 when user B requests user A's record", async () => {
+    const method = "{{method}}".toLowerCase() as "get";
+    // TODO(secor): if the ID travels in the query or the body instead of the path, send it there.
+    const path = "{{path}}".replace(/:\w+\??/g, recordOfUserA);
+    const res = await request(app)[method](path).set("Authorization", userBAuthorization);
+    expect([403, 404]).toContain(res.status);
+  });
+});

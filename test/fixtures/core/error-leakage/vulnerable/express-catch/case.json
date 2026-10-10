@@ -1,0 +1,5 @@
+{ "rule": "core/error-leakage", "expect": [
+  { "severity": "medium", "file": "src/routes.ts", "line": 9 },
+  { "severity": "medium", "file": "src/routes.ts", "line": 17 },
+  { "severity": "medium", "file": "src/routes.ts", "line": 24 }
+] }

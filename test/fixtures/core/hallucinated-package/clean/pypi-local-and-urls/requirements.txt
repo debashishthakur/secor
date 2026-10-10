@@ -1,0 +1,5 @@
+-e .
+git+https://github.com/example/tool.git#egg=tool
+my-wheel @ https://example.com/my_wheel-1.0-py3-none-any.whl
+demo-service==0.1.0
+./vendor/pkg

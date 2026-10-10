@@ -1,0 +1,1 @@
+{ "rule": "mcp/auth-required", "expect": [{ "severity": "critical", "file": "src/server.ts", "line": 6, "advisory": false, "evidenceIncludes": "new McpServer" }], "exact": true, "git": false }

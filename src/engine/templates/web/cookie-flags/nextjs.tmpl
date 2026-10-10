@@ -1,0 +1,20 @@
+// SECOR test for web/cookie-flags (Next.js + vitest): the session cookie must carry HttpOnly, Secure and SameSite.
+import { describe, expect, it } from "vitest";
+// TODO(secor): if the handler calls cookies() from "next/headers", mock that module with vi.mock("next/headers") or test through the running app.
+// TODO(secor): for a server action, call it with the arguments it expects instead of a Request and read the cookie from the mocked cookies().
+import * as route from "{{importPath}}";
+
+const handler = (route as unknown as Record<string, (req: Request) => Promise<Response>>)["{{handlerExport}}"];
+
+describe("{{method}} {{path}} session cookie", () => {
+  it("sets HttpOnly, Secure and SameSite on the session cookie", async () => {
+    expect(handler).toBeTypeOf("function");
+    // TODO(secor): replace :params in the URL and add the body or credentials this handler needs to set the cookie.
+    const res = await handler!(new Request("http://localhost{{path}}", { method: "{{method}}" }));
+    const setCookie = res.headers.get("set-cookie") ?? "";
+    expect(setCookie).not.toBe("");
+    expect(setCookie).toMatch(/;\s*HttpOnly/i);
+    expect(setCookie).toMatch(/;\s*Secure/i);
+    expect(setCookie).toMatch(/;\s*SameSite=(Lax|Strict|None)/i);
+  });
+});

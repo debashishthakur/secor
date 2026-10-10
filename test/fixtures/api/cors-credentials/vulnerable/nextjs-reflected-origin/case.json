@@ -1,0 +1,16 @@
+{
+  "rule": "api/cors-credentials",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "middleware.ts",
+      "line": 6
+    },
+    {
+      "severity": "high",
+      "file": "pages/api/widget.ts",
+      "line": 4
+    }
+  ],
+  "exact": true
+}

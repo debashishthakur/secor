@@ -1,0 +1,16 @@
+// SECOR test for api/cors-credentials: {{method}} {{path}}
+// A request from an unlisted Origin must get no Access-Control-Allow-Origin header.
+{{?vitest}}import { describe, expect, it } from "vitest";
+{{?jest}}import { describe, expect, it } from "@jest/globals";
+import request from "supertest";
+// TODO(secor): export the Express app from this module without calling app.listen(), so supertest can use it.
+import { {{handlerExport}} as app } from "{{importPath}}";
+
+describe("api/cors-credentials: {{method}} {{path}}", () => {
+  it("does not allow an unlisted origin", async () => {
+    const method = "{{method}}".toLowerCase() as "get";
+    // TODO(secor): replace any :params in the path with real values.
+    const res = await request(app)[method]("{{path}}").set("Origin", "https://unlisted.example");
+    expect(res.headers["access-control-allow-origin"]).toBeUndefined();
+  });
+});

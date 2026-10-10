@@ -1,0 +1,105 @@
+{
+  "POST https://api.osv.dev/v1/querybatch": {
+    "status": 200,
+    "body": {
+      "results": [
+        {
+          "vulns": [
+            {
+              "id": "GHSA-p6mc-m468-83gw",
+              "modified": "2024-01-01T00:00:00Z"
+            },
+            {
+              "id": "GHSA-35jh-r3h4-6jhm",
+              "modified": "2024-01-01T00:00:00Z"
+            }
+          ]
+        },
+        {}
+      ]
+    }
+  },
+  "GET https://api.osv.dev/v1/vulns/GHSA-35jh-r3h4-6jhm": {
+    "status": 200,
+    "body": {
+      "id": "GHSA-35jh-r3h4-6jhm",
+      "summary": "Test advisory GHSA-35jh-r3h4-6jhm",
+      "modified": "2024-01-01T00:00:00Z",
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "lodash"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "4.17.21"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "lodash-es"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "4.17.99"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "severity": "HIGH"
+      }
+    }
+  },
+  "GET https://api.osv.dev/v1/vulns/GHSA-p6mc-m468-83gw": {
+    "status": 200,
+    "body": {
+      "id": "GHSA-p6mc-m468-83gw",
+      "summary": "Test advisory GHSA-p6mc-m468-83gw",
+      "modified": "2024-01-01T00:00:00Z",
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "lodash"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "4.17.19"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "severity": "MODERATE"
+      }
+    }
+  }
+}

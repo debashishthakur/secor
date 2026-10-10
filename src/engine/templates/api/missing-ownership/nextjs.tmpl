@@ -1,0 +1,53 @@
+// SECOR test for api/missing-ownership: {{method}} {{path}}
+// User B asking for user A's record must be refused (403 or 404).
+import { describe, expect, it } from "vitest";
+import { {{handlerExport}} as handler } from "{{importPath}}";
+
+// TODO(secor): create a record owned by user A, and mock your auth library so the session is user B, for example:
+// vi.mock("@/auth", () => ({ auth: async () => ({ user: { id: "user-b" } }) }));
+const recordOfUserA = "TODO-record-id-of-user-A";
+const params: Record<string, string> = Object.fromEntries([..."{{path}}".matchAll(/:(\w+)/g)].map((m) => [m[1] ?? "id", recordOfUserA]));
+
+describe("api/missing-ownership: {{method}} {{path}}", () => {
+{{?route}}  it("returns 403 or 404 when user B requests user A's record", async () => {
+{{?route}}    const call = handler as unknown as (req: Request, ctx: { params: Promise<Record<string, string>> }) => Promise<Response>;
+{{?route}}    const url = `http://localhost${"{{path}}".replace(/:\w+\??/g, recordOfUserA)}`;
+{{?route}}    const res = await call(new Request(url, { method: "{{method}}" }), { params: Promise.resolve(params) });
+{{?route}}    expect([403, 404]).toContain(res.status);
+{{?route}}  });
+{{?pages}}  it("returns 403 or 404 when user B requests user A's record", async () => {
+{{?pages}}    const call = handler as unknown as (req: unknown, res: unknown) => Promise<void> | void;
+{{?pages}}    const res = fakeResponse();
+{{?pages}}    await call({ method: "{{method}}", url: "{{path}}", query: params, headers: {}, cookies: {} }, res);
+{{?pages}}    expect([403, 404]).toContain(res.statusCode);
+{{?pages}}  });
+{{?action}}  it("refuses user B's call on user A's record", async () => {
+{{?action}}    // TODO(secor): pass the arguments this server action expects, with user A's record ID. If it returns an error instead of throwing, assert on that value.
+{{?action}}    const call = handler as unknown as (...args: unknown[]) => Promise<unknown>;
+{{?action}}    await expect(call(recordOfUserA)).rejects.toThrow();
+{{?action}}  });
+});
+{{?pages}}
+{{?pages}}function fakeResponse() {
+{{?pages}}  return {
+{{?pages}}    statusCode: 200,
+{{?pages}}    headers: {} as Record<string, unknown>,
+{{?pages}}    status(code: number) {
+{{?pages}}      this.statusCode = code;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    setHeader(name: string, value: unknown) {
+{{?pages}}      this.headers[name.toLowerCase()] = value;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    json() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    send() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    end() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}  };
+{{?pages}}}

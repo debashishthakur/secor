@@ -1,0 +1,13 @@
+{
+  "rule": "web/client-only-checks",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "components/AdminTools.tsx",
+      "line": 8,
+      "advisory": true
+    }
+  ],
+  "exact": true,
+  "git": false
+}

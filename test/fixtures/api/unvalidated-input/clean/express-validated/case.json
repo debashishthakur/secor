@@ -1,0 +1,5 @@
+{
+  "rule": "api/unvalidated-input",
+  "expect": [],
+  "exact": true
+}

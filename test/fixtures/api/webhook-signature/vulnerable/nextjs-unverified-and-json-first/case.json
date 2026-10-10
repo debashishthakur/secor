@@ -1,0 +1,21 @@
+{
+  "rule": "api/webhook-signature",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "app/api/stripe/route.ts",
+      "line": 6
+    },
+    {
+      "severity": "high",
+      "file": "app/api/webhooks/clerk/route.ts",
+      "line": 4
+    },
+    {
+      "severity": "high",
+      "file": "pages/api/webhooks/paddle.ts",
+      "line": 3
+    }
+  ],
+  "exact": true
+}

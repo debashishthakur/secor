@@ -1,0 +1,87 @@
+{
+  "POST https://api.osv.dev/v1/querybatch": {
+    "status": 200,
+    "body": {
+      "results": [
+        {
+          "vulns": [
+            {
+              "id": "GHSA-cph5-m8f7-6c5x"
+            }
+          ]
+        },
+        {
+          "vulns": [
+            {
+              "id": "GHSA-74fj-2j2h-c42q"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "GET https://api.osv.dev/v1/vulns/GHSA-cph5-m8f7-6c5x": {
+    "status": 200,
+    "body": {
+      "id": "GHSA-cph5-m8f7-6c5x",
+      "summary": "Test advisory GHSA-cph5-m8f7-6c5x",
+      "modified": "2024-01-01T00:00:00Z",
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "axios"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0.21.2"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "severity": "HIGH"
+      }
+    }
+  },
+  "GET https://api.osv.dev/v1/vulns/GHSA-74fj-2j2h-c42q": {
+    "status": 200,
+    "body": {
+      "id": "GHSA-74fj-2j2h-c42q",
+      "summary": "Test advisory GHSA-74fj-2j2h-c42q",
+      "modified": "2024-01-01T00:00:00Z",
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "follow-redirects"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.14.7"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "severity": "MODERATE"
+      }
+    }
+  }
+}

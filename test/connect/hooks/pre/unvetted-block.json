@@ -1,0 +1,37 @@
+{
+  "description": "defaults.unvetted: block denies even though onViolation is ask",
+  "scopes": "version: 1\ndefaults:\n  unvetted: block\n",
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__random__lookup",
+        "tool_input": {
+          "q": "weather"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "decision": "deny",
+          "reasonIncludes": [
+            "unvetted"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "block",
+            "codes": [
+              "unvetted"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

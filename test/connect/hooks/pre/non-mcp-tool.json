@@ -1,0 +1,24 @@
+{
+  "description": "A non-MCP tool name: no output, no ledger",
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "echo __FAKE_OPENAI__"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "rule": "api/missing-ownership",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/api/notes/[id]/route.ts",
+      "line": 25,
+      "advisory": true
+    }
+  ],
+  "exact": true
+}

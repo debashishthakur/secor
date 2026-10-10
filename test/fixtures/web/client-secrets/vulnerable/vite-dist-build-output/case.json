@@ -1,0 +1,13 @@
+{
+  "rule": "web/client-secrets",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "dist/assets/index-a1b2c3.js",
+      "line": 1,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

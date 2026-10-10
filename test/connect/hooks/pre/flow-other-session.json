@@ -1,0 +1,54 @@
+{
+  "description": "Fingerprints are per session: another session's output does not count",
+  "scopes": "version: 1\nservers:\n  github: {}\n  notion: {}\n",
+  "managed": [
+    "github",
+    "notion"
+  ],
+  "steps": [
+    {
+      "phase": "post",
+      "input": {
+        "session_id": "sess-A",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-A.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PostToolUse",
+        "tool_name": "mcp__notion__get_page",
+        "tool_input": {
+          "id": "p1"
+        },
+        "tool_use_id": "toolu_01",
+        "tool_response": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": []
+      }
+    },
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-B",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-B.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__github__create_issue",
+        "tool_input": {
+          "body": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "pass",
+            "codes": []
+          }
+        ]
+      }
+    }
+  ]
+}

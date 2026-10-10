@@ -1,0 +1,37 @@
+{
+  "rule": "web/database-rules",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "firestore.rules",
+      "line": 6,
+      "advisory": false
+    },
+    {
+      "severity": "high",
+      "file": "firestore.rules",
+      "line": 9,
+      "advisory": true
+    },
+    {
+      "severity": "critical",
+      "file": "firestore.rules",
+      "line": 18,
+      "advisory": false
+    },
+    {
+      "severity": "critical",
+      "file": "storage.rules",
+      "line": 8,
+      "advisory": false
+    },
+    {
+      "severity": "high",
+      "file": "storage.rules",
+      "line": 9,
+      "advisory": true
+    }
+  ],
+  "exact": true,
+  "git": false
+}

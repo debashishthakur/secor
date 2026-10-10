@@ -1,0 +1,13 @@
+{
+  "rule": "web/client-only-checks",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "components/UserTable.tsx",
+      "line": 9,
+      "advisory": true
+    }
+  ],
+  "exact": true,
+  "git": false
+}

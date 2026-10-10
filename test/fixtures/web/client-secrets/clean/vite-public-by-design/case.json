@@ -1,0 +1,6 @@
+{
+  "rule": "web/client-secrets",
+  "expect": [],
+  "exact": true,
+  "git": false
+}

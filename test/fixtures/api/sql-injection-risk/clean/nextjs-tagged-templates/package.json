@@ -1,0 +1,11 @@
+{
+  "name": "fx",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "next": "15.3.0",
+    "react": "19.1.0",
+    "postgres": "3.4.5",
+    "drizzle-orm": "0.41.0"
+  }
+}

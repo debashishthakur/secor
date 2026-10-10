@@ -1,0 +1,33 @@
+{
+  "description": "Read of a path outside confidential.paths stores nothing",
+  "scopes": "version: 1\nconfidential:\n  paths: [\"~/secret-notes/**\"]\n",
+  "steps": [
+    {
+      "phase": "post",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PostToolUse",
+        "tool_name": "Read",
+        "tool_input": {
+          "file_path": "${PROJECT}/README.md"
+        },
+        "tool_use_id": "toolu_01",
+        "tool_response": {
+          "type": "text",
+          "file": {
+            "filePath": "${PROJECT}/README.md",
+            "content": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+          }
+        }
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [],
+        "fingerprintSources": []
+      }
+    }
+  ]
+}

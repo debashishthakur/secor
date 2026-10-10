@@ -1,0 +1,5 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [],
+  "offline": true
+}

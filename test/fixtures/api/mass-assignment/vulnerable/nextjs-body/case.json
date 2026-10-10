@@ -1,0 +1,26 @@
+{
+  "rule": "api/mass-assignment",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/actions.ts",
+      "line": 11
+    },
+    {
+      "severity": "high",
+      "file": "app/api/posts/route.ts",
+      "line": 8
+    },
+    {
+      "severity": "high",
+      "file": "app/api/settings/route.ts",
+      "line": 9
+    },
+    {
+      "severity": "high",
+      "file": "pages/api/teams/[id].ts",
+      "line": 9
+    }
+  ],
+  "exact": true
+}

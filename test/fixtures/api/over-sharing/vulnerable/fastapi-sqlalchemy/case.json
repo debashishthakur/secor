@@ -1,0 +1,16 @@
+{
+  "rule": "api/over-sharing",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 13
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 18
+    }
+  ],
+  "exact": true
+}

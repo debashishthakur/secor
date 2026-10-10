@@ -1,0 +1,7 @@
+[project]
+name = "demo-service"
+version = "0.1.0"
+dependencies = [
+  "httpx>=0.27",
+  "langchain-turbo-tools>=0.1",
+]

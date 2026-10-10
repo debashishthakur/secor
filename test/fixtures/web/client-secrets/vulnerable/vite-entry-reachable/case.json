@@ -1,0 +1,31 @@
+{
+  "rule": "web/client-secrets",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "src/lib/payments.ts",
+      "line": 1,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "src/lib/payments.ts",
+      "line": 2,
+      "advisory": false
+    },
+    {
+      "severity": "medium",
+      "file": "src/lib/maps.ts",
+      "line": 1,
+      "advisory": false
+    },
+    {
+      "severity": "critical",
+      "file": ".env",
+      "line": 2,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

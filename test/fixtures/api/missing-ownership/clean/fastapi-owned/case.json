@@ -1,0 +1,5 @@
+{
+  "rule": "api/missing-ownership",
+  "expect": [],
+  "exact": true
+}

@@ -1,0 +1,8 @@
+{
+  "name": "demo",
+  "dependencies": {
+    "@babel/traverse": "^7.0.0",
+    "lodash": "^4.17.15",
+    "local-lib": "file:./local-lib"
+  }
+}

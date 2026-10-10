@@ -1,0 +1,75 @@
+{
+  "description": "Output of notion (post) sent to github (pre): ask flow:notion",
+  "scopes": "version: 1\nservers:\n  github: {}\n  notion: {}\n",
+  "managed": [
+    "github",
+    "notion"
+  ],
+  "steps": [
+    {
+      "phase": "post",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PostToolUse",
+        "tool_name": "mcp__notion__get_page",
+        "tool_input": {
+          "id": "p1"
+        },
+        "tool_use_id": "toolu_01",
+        "tool_response": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+            }
+          ]
+        }
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [],
+        "fingerprintSources": [
+          "notion"
+        ]
+      }
+    },
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__github__create_issue",
+        "tool_input": {
+          "title": "Plan",
+          "body": "Copied: Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "decision": "ask",
+          "reasonIncludes": [
+            "flow:notion"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "ask",
+            "codes": [
+              "flow:notion"
+            ],
+            "flowSources": [
+              "notion"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

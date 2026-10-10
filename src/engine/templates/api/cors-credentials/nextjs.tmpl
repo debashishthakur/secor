@@ -1,0 +1,51 @@
+// SECOR test for api/cors-credentials: {{method}} {{path}}
+// A request from an unlisted Origin must get no Access-Control-Allow-Origin header.
+import { describe, expect, it } from "vitest";
+{{?middleware}}import { NextRequest } from "next/server";
+import { {{handlerExport}} as handler } from "{{importPath}}";
+
+// TODO(secor): use a path this CORS code applies to, with real values for any :params.
+const unlisted = "https://unlisted.example";
+
+describe("api/cors-credentials: {{method}} {{path}}", () => {
+{{?route}}  it("does not allow an unlisted origin", async () => {
+{{?route}}    const call = handler as unknown as (req: Request, ctx: { params: Promise<Record<string, string>> }) => Promise<Response>;
+{{?route}}    const res = await call(new Request("http://localhost{{path}}", { method: "{{method}}", headers: { origin: unlisted } }), { params: Promise.resolve({}) });
+{{?route}}    expect(res.headers.get("access-control-allow-origin")).toBeNull();
+{{?route}}  });
+{{?pages}}  it("does not allow an unlisted origin", async () => {
+{{?pages}}    const call = handler as unknown as (req: unknown, res: unknown) => Promise<void> | void;
+{{?pages}}    const res = fakeResponse();
+{{?pages}}    await call({ method: "{{method}}", url: "{{path}}", query: {}, headers: { origin: unlisted }, cookies: {} }, res);
+{{?pages}}    expect(res.headers["access-control-allow-origin"]).toBeUndefined();
+{{?pages}}  });
+{{?middleware}}  it("does not allow an unlisted origin", async () => {
+{{?middleware}}    const call = handler as unknown as (req: NextRequest) => Promise<Response | undefined> | Response | undefined;
+{{?middleware}}    const res = await call(new NextRequest("http://localhost{{path}}", { method: "{{method}}", headers: { origin: unlisted } }));
+{{?middleware}}    expect(res?.headers.get("access-control-allow-origin") ?? null).toBeNull();
+{{?middleware}}  });
+});
+{{?pages}}
+{{?pages}}function fakeResponse() {
+{{?pages}}  return {
+{{?pages}}    statusCode: 200,
+{{?pages}}    headers: {} as Record<string, unknown>,
+{{?pages}}    status(code: number) {
+{{?pages}}      this.statusCode = code;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    setHeader(name: string, value: unknown) {
+{{?pages}}      this.headers[name.toLowerCase()] = value;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    json() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    send() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    end() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}  };
+{{?pages}}}

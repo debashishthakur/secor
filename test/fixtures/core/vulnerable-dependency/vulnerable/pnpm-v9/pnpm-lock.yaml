@@ -1,0 +1,44 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      axios:
+        specifier: ^0.21.0
+        version: 0.21.1
+    devDependencies:
+      vitest:
+        specifier: ^1.0.0
+        version: 1.0.0
+
+packages:
+
+  axios@0.21.1:
+    resolution: {integrity: sha512-EEEE}
+
+  follow-redirects@1.14.0:
+    resolution: {integrity: sha512-FFFF}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+
+  vitest@1.0.0:
+    resolution: {integrity: sha512-GGGG}
+
+snapshots:
+
+  axios@0.21.1:
+    dependencies:
+      follow-redirects: 1.14.0
+
+  follow-redirects@1.14.0: {}
+
+  vitest@1.0.0: {}

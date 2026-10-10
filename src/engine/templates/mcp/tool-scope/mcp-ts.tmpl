@@ -1,0 +1,70 @@
+// SECOR test for mcp/tool-scope: the tool "{{toolName}}" must reject a path outside its allowed root.
+// It connects to the server in memory with the MCP SDK (InMemoryTransport) and calls the tool directly.
+// TODO(secor): if importing the server module starts an HTTP listener or a stdio transport, move the server setup into a module without side effects.
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
+import { afterEach, describe, expect, it } from "vitest";
+import * as serverModule from "{{importPath}}";
+
+const MARKER = "SECOR-OUTSIDE-MARKER";
+
+interface ConnectableServer {
+  connect(transport: InMemoryTransport): Promise<void>;
+  close(): Promise<void>;
+}
+
+async function loadServer(allowedRoot: string): Promise<ConnectableServer> {
+  // TODO(secor): "{{handlerExport}}" must be the exported McpServer / Server that registers "{{toolName}}", or a function that returns it.
+  const exported = (serverModule as Record<string, unknown>)["{{handlerExport}}"];
+  const server = typeof exported === "function" ? await (exported as (root: string) => unknown)(allowedRoot) : exported;
+  if (!server || typeof (server as Partial<ConnectableServer>).connect !== "function") {
+    throw new Error("Export the MCP server (or a factory that returns it) and name it in this test.");
+  }
+  return server as ConnectableServer;
+}
+
+describe("mcp/tool-scope: {{toolName}}", () => {
+  const cleanups: (() => Promise<void>)[] = [];
+  afterEach(async () => {
+    for (const cleanup of cleanups.splice(0)) await cleanup();
+  });
+
+  for (const variant of ["relative", "absolute"] as const) {
+    it(`rejects a ${variant} path outside the allowed root`, async () => {
+      const sandbox = mkdtempSync(join(tmpdir(), "secor-tool-scope-"));
+      const allowedRoot = join(sandbox, "allowed");
+      mkdirSync(allowedRoot);
+      writeFileSync(join(sandbox, "outside.txt"), MARKER);
+      // TODO(secor): make the server use `allowedRoot` as its allowed root (factory argument, environment variable or working directory).
+      const server = await loadServer(allowedRoot);
+      const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
+      await server.connect(serverTransport);
+      const client = new Client({ name: "secor-test", version: "1.0.0" });
+      await client.connect(clientTransport);
+      cleanups.push(async () => {
+        await client.close();
+        await server.close();
+        rmSync(sandbox, { recursive: true, force: true });
+      });
+
+      const target = variant === "relative" ? "../outside.txt" : join(sandbox, "outside.txt");
+      // TODO(secor): use the argument name the tool reads its path from, and add any other required arguments.
+      const toolArguments = { path: target };
+      let rejected = false;
+      let text = "";
+      try {
+        const result = await client.callTool({ name: "{{toolName}}", arguments: toolArguments });
+        rejected = result.isError === true;
+        text = JSON.stringify(result.content ?? []);
+      } catch {
+        // A protocol error (for example from a low-level Server handler that throws) also rejects the call.
+        rejected = true;
+      }
+      expect(text).not.toContain(MARKER);
+      expect(rejected).toBe(true);
+    });
+  }
+});

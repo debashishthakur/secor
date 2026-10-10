@@ -1,0 +1,24 @@
+// SECOR test for api/mass-assignment: {{method}} {{path}}
+// Sending role: "admin" must leave the stored role unchanged.
+{{?vitest}}import { describe, expect, it } from "vitest";
+{{?jest}}import { describe, expect, it } from "@jest/globals";
+import request from "supertest";
+// TODO(secor): export the Express app from this module without calling app.listen(), so supertest can use it.
+import { {{handlerExport}} as app } from "{{importPath}}";
+
+// TODO(secor): sign in as a normal (non-admin) user.
+const authorization = "Bearer TODO-token-of-a-normal-user";
+
+async function storedRole(): Promise<unknown> {
+  // TODO(secor): load the record this request created or updated (for example with your ORM client) and return its role.
+  return undefined;
+}
+
+describe("api/mass-assignment: {{method}} {{path}}", () => {
+  it("ignores a role sent by the client", async () => {
+    const method = "{{method}}".toLowerCase() as "post";
+    // TODO(secor): replace any :params in the path and add the fields this endpoint requires.
+    await request(app)[method]("{{path}}").set("Authorization", authorization).send({ role: "admin" });
+    expect(await storedRole()).not.toBe("admin");
+  });
+});

@@ -1,0 +1,37 @@
+{
+  "description": "unvetted: pass continues the checks with the default scope (a secret still asks)",
+  "scopes": "version: 1\ndefaults:\n  unvetted: pass\n",
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__random__lookup",
+        "tool_input": {
+          "q": "__FAKE_STRIPE_LIVE__"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "decision": "ask",
+          "reasonIncludes": [
+            "class:secret"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "ask",
+            "codes": [
+              "class:secret"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

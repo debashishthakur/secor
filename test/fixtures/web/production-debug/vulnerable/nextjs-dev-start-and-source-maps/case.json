@@ -1,0 +1,19 @@
+{
+  "rule": "web/production-debug",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "package.json",
+      "line": 6,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "next.config.js",
+      "line": 2,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

@@ -1,0 +1,24 @@
+{
+  "rule": "api/missing-ownership",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 12,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 20,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 26,
+      "advisory": true
+    }
+  ],
+  "exact": true
+}

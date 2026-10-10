@@ -1,0 +1,7 @@
+{
+  "name": "demo",
+  "packageManager": "yarn@4.1.0",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
+}

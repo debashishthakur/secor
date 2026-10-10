@@ -1,0 +1,12 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "poetry.lock",
+      "line": 4,
+      "evidenceIncludes": "jinja2@2.11.2: GHSA-g3rq-g295-4j3m, PYSEC-2021-66"
+    }
+  ],
+  "net": "net.json"
+}

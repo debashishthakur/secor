@@ -1,0 +1,54 @@
+{
+  "description": "A server's own output may always flow back to it",
+  "scopes": "version: 1\nservers:\n  github: {}\n",
+  "managed": [
+    "github"
+  ],
+  "steps": [
+    {
+      "phase": "post",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PostToolUse",
+        "tool_name": "mcp__github__get_issue",
+        "tool_input": {
+          "n": 1
+        },
+        "tool_use_id": "toolu_01",
+        "tool_response": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": []
+      }
+    },
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__github__create_issue",
+        "tool_input": {
+          "body": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "pass",
+            "codes": [],
+            "noFlows": true
+          }
+        ]
+      }
+    }
+  ]
+}

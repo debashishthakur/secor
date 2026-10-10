@@ -1,0 +1,1 @@
+{ "rule": "core/error-leakage", "expect": [ { "severity": "medium", "file": "src/app.js", "line": 11 } ] }

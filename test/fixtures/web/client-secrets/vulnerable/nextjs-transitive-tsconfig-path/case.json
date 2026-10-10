@@ -1,0 +1,19 @@
+{
+  "rule": "web/client-secrets",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "src/lib/ai.ts",
+      "line": 3,
+      "advisory": false
+    },
+    {
+      "severity": "critical",
+      "file": "src/lib/format.ts",
+      "line": 1,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

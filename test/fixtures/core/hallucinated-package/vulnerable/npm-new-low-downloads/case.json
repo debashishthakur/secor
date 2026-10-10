@@ -1,0 +1,13 @@
+{
+  "rule": "core/hallucinated-package",
+  "net": "net.json",
+  "expect": [
+    {
+      "severity": "high",
+      "advisory": true,
+      "file": "package.json",
+      "line": 7,
+      "evidenceIncludes": "12 downloads last week"
+    }
+  ]
+}

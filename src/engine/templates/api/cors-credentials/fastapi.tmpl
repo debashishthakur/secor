@@ -1,0 +1,14 @@
+# SECOR test for api/cors-credentials: {{method}} {{path}}
+# A request from an unlisted Origin must get no Access-Control-Allow-Origin header.
+from fastapi.testclient import TestClient
+
+# TODO(secor): import the FastAPI app that includes this route.
+from {{importPath}} import {{handlerExport}} as app
+
+client = TestClient(app)
+
+
+def test_unlisted_origin_gets_no_cors_header():
+    # TODO(secor): replace any :params in the path with real values.
+    response = client.request("{{method}}", "{{path}}", headers={"Origin": "https://unlisted.example"})
+    assert "access-control-allow-origin" not in response.headers

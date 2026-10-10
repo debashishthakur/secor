@@ -1,0 +1,18 @@
+{
+  "GET https://registry.npmjs.org/lodash": {
+    "status": 200,
+    "body": {
+      "name": "lodash",
+      "time": {
+        "created": "2012-04-23T16:37:11.912Z",
+        "modified": "2012-04-23T16:37:11.912Z"
+      },
+      "versions": {
+        "1.0.0": {
+          "name": "lodash",
+          "version": "1.0.0"
+        }
+      }
+    }
+  }
+}

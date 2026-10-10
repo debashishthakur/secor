@@ -1,0 +1,13 @@
+{
+  "rule": "core/hallucinated-package",
+  "net": "net.json",
+  "expect": [
+    {
+      "severity": "high",
+      "advisory": false,
+      "file": "requirements.txt",
+      "line": 2,
+      "evidenceIncludes": "not found on PyPI"
+    }
+  ]
+}

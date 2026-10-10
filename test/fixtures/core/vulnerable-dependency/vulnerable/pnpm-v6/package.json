@@ -1,0 +1,9 @@
+{
+  "name": "demo",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "ajv": "^6.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "rule": "api/over-sharing",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "src/app.js",
+      "line": 10
+    },
+    {
+      "severity": "high",
+      "file": "src/app.js",
+      "line": 15
+    },
+    {
+      "severity": "high",
+      "file": "src/app.js",
+      "line": 20
+    }
+  ],
+  "exact": true
+}

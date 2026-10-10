@@ -1,0 +1,1 @@
+{ "rule": "core/error-leakage", "expect": [ { "severity": "medium", "file": "app/main.py", "line": 3 } ] }

@@ -1,0 +1,11 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "uv.lock",
+      "line": 28
+    }
+  ],
+  "net": "net.json"
+}

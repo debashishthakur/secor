@@ -1,0 +1,21 @@
+{
+  "rule": "api/cors-credentials",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "src/app.js",
+      "line": 6
+    },
+    {
+      "severity": "high",
+      "file": "src/app.js",
+      "line": 9
+    },
+    {
+      "severity": "high",
+      "file": "src/app.js",
+      "line": 12
+    }
+  ],
+  "exact": true
+}

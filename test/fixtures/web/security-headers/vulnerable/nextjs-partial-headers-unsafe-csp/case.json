@@ -1,0 +1,25 @@
+{
+  "rule": "web/security-headers",
+  "expect": [
+    {
+      "severity": "low",
+      "file": "next.config.mjs",
+      "line": 7,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "next.config.mjs",
+      "line": 7,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "next.config.mjs",
+      "line": 3,
+      "advisory": true
+    }
+  ],
+  "exact": true,
+  "git": false
+}

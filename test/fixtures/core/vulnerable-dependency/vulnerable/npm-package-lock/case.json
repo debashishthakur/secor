@@ -1,0 +1,12 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "package-lock.json",
+      "line": 24,
+      "evidenceIncludes": "lodash@4.17.15: GHSA-35jh-r3h4-6jhm, GHSA-p6mc-m468-83gw"
+    }
+  ],
+  "net": "net.json"
+}

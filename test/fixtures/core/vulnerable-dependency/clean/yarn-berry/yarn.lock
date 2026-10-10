@@ -1,0 +1,16 @@
+__metadata:
+  version: 8
+  cacheKey: 10c0
+
+"demo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "demo@workspace:."
+  languageName: unknown
+  linkType: soft
+
+"zod@npm:^3.23.0":
+  version: 3.23.8
+  resolution: "zod@npm:3.23.8"
+  checksum: 10c0/1111
+  languageName: node
+  linkType: hard

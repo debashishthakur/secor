@@ -1,0 +1,14 @@
+# SECOR test for api/webhook-signature: {{method}} {{path}}
+# An unsigned webhook request must get 400.
+from fastapi.testclient import TestClient
+
+# TODO(secor): import the FastAPI app that includes this route.
+from {{importPath}} import {{handlerExport}} as app
+
+client = TestClient(app)
+
+
+def test_rejects_unsigned_webhook_request():
+    # No signature header (stripe-signature, svix-signature, x-hub-signature-256, ...) is sent.
+    response = client.request("{{method}}", "{{path}}", json={"type": "test.event", "data": {}})
+    assert response.status_code == 400

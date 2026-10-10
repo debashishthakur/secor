@@ -1,0 +1,21 @@
+{
+  "rule": "api/over-sharing",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/api/accounts/route.ts",
+      "line": 6
+    },
+    {
+      "severity": "high",
+      "file": "app/api/profile/route.ts",
+      "line": 11
+    },
+    {
+      "severity": "high",
+      "file": "pages/api/customers/[id].ts",
+      "line": 6
+    }
+  ],
+  "exact": true
+}

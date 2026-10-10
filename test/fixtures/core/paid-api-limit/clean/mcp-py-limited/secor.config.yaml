@@ -1,0 +1,3 @@
+version: 1
+rateLimit:
+  helpers: ["check_quota"]

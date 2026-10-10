@@ -1,0 +1,45 @@
+// SECOR test for api/webhook-signature: {{method}} {{path}}
+// An unsigned webhook request must get 400.
+import { describe, expect, it } from "vitest";
+import { {{handlerExport}} as handler } from "{{importPath}}";
+
+// TODO(secor): set the webhook secret your handler reads (for example process.env.STRIPE_WEBHOOK_SECRET) to a test value.
+
+describe("api/webhook-signature: {{method}} {{path}}", () => {
+{{?route}}  it("rejects an unsigned webhook request", async () => {
+{{?route}}    const call = handler as unknown as (req: Request, ctx: { params: Promise<Record<string, string>> }) => Promise<Response>;
+{{?route}}    const body = JSON.stringify({ type: "test.event", data: {} });
+{{?route}}    const res = await call(new Request("http://localhost{{path}}", { method: "{{method}}", headers: { "content-type": "application/json" }, body }), { params: Promise.resolve({}) });
+{{?route}}    expect(res.status).toBe(400);
+{{?route}}  });
+{{?pages}}  it("rejects an unsigned webhook request", async () => {
+{{?pages}}    const call = handler as unknown as (req: unknown, res: unknown) => Promise<void> | void;
+{{?pages}}    const res = fakeResponse();
+{{?pages}}    await call({ method: "{{method}}", url: "{{path}}", query: {}, headers: { "content-type": "application/json" }, cookies: {}, body: { type: "test.event", data: {} } }, res);
+{{?pages}}    expect(res.statusCode).toBe(400);
+{{?pages}}  });
+});
+{{?pages}}
+{{?pages}}function fakeResponse() {
+{{?pages}}  return {
+{{?pages}}    statusCode: 200,
+{{?pages}}    headers: {} as Record<string, unknown>,
+{{?pages}}    status(code: number) {
+{{?pages}}      this.statusCode = code;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    setHeader(name: string, value: unknown) {
+{{?pages}}      this.headers[name.toLowerCase()] = value;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    json() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    send() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    end() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}  };
+{{?pages}}}

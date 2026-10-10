@@ -1,0 +1,18 @@
+{
+  "rule": "api/missing-ownership",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "src/routes/notes.js",
+      "line": 9,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "src/routes/notes.js",
+      "line": 15,
+      "advisory": true
+    }
+  ],
+  "exact": true
+}

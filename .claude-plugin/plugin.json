@@ -1,0 +1,6 @@
+{
+  "name": "secor",
+  "version": "1.0.0",
+  "description": "Checks the API routes, MCP servers and websites you build for known security mistakes, and guards your data from the MCP servers you connect. Requires the secor CLI: npm install -g secor.",
+  "license": "Apache-2.0"
+}

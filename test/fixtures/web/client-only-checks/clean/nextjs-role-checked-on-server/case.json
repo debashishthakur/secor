@@ -1,0 +1,6 @@
+{
+  "rule": "web/client-only-checks",
+  "expect": [],
+  "exact": true,
+  "git": false
+}

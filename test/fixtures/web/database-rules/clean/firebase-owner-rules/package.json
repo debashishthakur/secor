@@ -1,0 +1,6 @@
+{
+  "name": "fx-fire",
+  "dependencies": {
+    "firebase": "10.12.0"
+  }
+}

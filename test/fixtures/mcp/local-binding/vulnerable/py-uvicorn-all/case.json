@@ -1,0 +1,1 @@
+{ "rule": "mcp/local-binding", "expect": [{ "severity": "high", "file": "server.py", "line": 16, "advisory": false, "evidenceIncludes": "(a) listens on all interfaces: uvicorn.run" }], "exact": true, "git": false }

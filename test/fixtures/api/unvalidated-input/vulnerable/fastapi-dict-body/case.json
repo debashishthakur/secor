@@ -1,0 +1,16 @@
+{
+  "rule": "api/unvalidated-input",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "app/main.py",
+      "line": 14
+    },
+    {
+      "severity": "medium",
+      "file": "app/main.py",
+      "line": 21
+    }
+  ],
+  "exact": true
+}

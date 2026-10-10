@@ -1,0 +1,38 @@
+{
+  "description": "A third-party plugin server is unmanaged unless added: unvetted",
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__plugin_tools_search__query",
+        "tool_input": {
+          "q": "x"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "decision": "ask",
+          "reasonIncludes": [
+            "unvetted"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "ask",
+            "server": "plugin_tools_search",
+            "tool": "query",
+            "codes": [
+              "unvetted"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

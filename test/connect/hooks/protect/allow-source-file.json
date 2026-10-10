@@ -1,0 +1,25 @@
+{
+  "description": "An ordinary source file",
+  "steps": [
+    {
+      "phase": "protect",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "Write",
+        "tool_input": {
+          "file_path": "${PROJECT}/src/app.ts",
+          "content": "x"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": []
+      }
+    }
+  ]
+}

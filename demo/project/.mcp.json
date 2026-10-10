@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "second-brain-local": {
+      "command": "npx",
+      "args": ["-y", "debawho-brain-mcp@0.4.0", "--stdio"],
+      "env": { "BRAIN_MCP_HOME": "/tmp/brain-mcp" }
+    }
+  }
+}

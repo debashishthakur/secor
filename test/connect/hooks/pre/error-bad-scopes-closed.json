@@ -1,0 +1,39 @@
+{
+  "description": "scopes.yaml has an unknown key but says failMode: closed: deny SECOR unavailable",
+  "scopes": "version: 1\ndefaults:\n  failMode: closed\n  bogus: 1\n",
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__github__create_issue",
+        "tool_input": {
+          "title": "x"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "decision": "deny",
+          "reasonIncludes": [
+            "SECOR unavailable"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "error",
+            "server": "github",
+            "codes": [
+              "error"
+            ]
+          }
+        ],
+        "hooksLog": true
+      }
+    }
+  ]
+}

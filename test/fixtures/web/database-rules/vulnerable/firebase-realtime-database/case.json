@@ -1,0 +1,19 @@
+{
+  "rule": "web/database-rules",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "rules/database.rules.json",
+      "line": 3,
+      "advisory": false
+    },
+    {
+      "severity": "high",
+      "file": "rules/database.rules.json",
+      "line": 6,
+      "advisory": true
+    }
+  ],
+  "exact": true,
+  "git": false
+}

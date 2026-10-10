@@ -1,0 +1,5 @@
+{
+  "rule": "api/over-sharing",
+  "expect": [],
+  "exact": true
+}

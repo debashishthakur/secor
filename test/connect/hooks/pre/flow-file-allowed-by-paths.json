@@ -1,0 +1,65 @@
+{
+  "description": "The server's scope paths cover the file: the flow passes",
+  "scopes": "version: 1\nconfidential:\n  paths: [\"~/secret-notes/**\"]\nservers:\n  github:\n    paths: [\"~/secret-notes/**\"]\n",
+  "managed": [
+    "github"
+  ],
+  "files": {
+    "${HOME}/secret-notes/plan.md": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+  },
+  "steps": [
+    {
+      "phase": "post",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PostToolUse",
+        "tool_name": "Read",
+        "tool_input": {
+          "file_path": "${HOME}/secret-notes/plan.md"
+        },
+        "tool_use_id": "toolu_01",
+        "tool_response": {
+          "type": "text",
+          "file": {
+            "filePath": "${HOME}/secret-notes/plan.md",
+            "content": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+          }
+        }
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": []
+      }
+    },
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__github__create_issue",
+        "tool_input": {
+          "body": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "pass",
+            "codes": [],
+            "flowSources": [
+              "file:${HOME}/secret-notes/plan.md"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

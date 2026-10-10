@@ -1,0 +1,12 @@
+{
+  "rule": "core/hallucinated-package",
+  "net": "net.json",
+  "expect": [
+    {
+      "severity": "high",
+      "advisory": true,
+      "file": "pyproject.toml",
+      "line": 6
+    }
+  ]
+}

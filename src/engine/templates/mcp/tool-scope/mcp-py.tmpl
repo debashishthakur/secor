@@ -1,0 +1,59 @@
+# SECOR test for mcp/tool-scope: the tool "{{toolName}}" must reject a path outside its allowed root.
+# It connects to the server in memory with the SDK's client session helper and calls the tool directly.
+# TODO(secor): if importing the server module starts the server (mcp.run(), uvicorn.run()), guard that call with `if __name__ == "__main__":`.
+import importlib
+import inspect
+
+import pytest
+
+{{?mcp1}}from mcp.shared.memory import create_connected_server_and_client_session
+{{?mcp2}}from mcp.client import Client
+{{?fastmcp}}from fastmcp import Client
+{{?fastmcp}}from fastmcp.exceptions import ToolError
+
+MARKER = "SECOR-OUTSIDE-MARKER"
+
+
+def load_server(allowed_root):
+    # TODO(secor): run pytest from the project root (or set pythonpath) so that "{{importPath}}" imports.
+    module = importlib.import_module("{{importPath}}")
+    # TODO(secor): "{{handlerExport}}" must be the server object that registers "{{toolName}}", or a function that returns it.
+    exported = getattr(module, "{{handlerExport}}")
+    if inspect.isfunction(exported):
+        return exported(allowed_root) if inspect.signature(exported).parameters else exported()
+    return exported
+
+
+@pytest.fixture
+def anyio_backend():
+    return "asyncio"
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize("variant", ["relative", "absolute"])
+async def test_rejects_path_outside_allowed_root(tmp_path, monkeypatch, variant):
+    allowed_root = tmp_path / "allowed"
+    allowed_root.mkdir()
+    (tmp_path / "outside.txt").write_text(MARKER)
+    # TODO(secor): make the server use allowed_root as its allowed root (factory argument, environment variable or setting).
+    monkeypatch.chdir(allowed_root)
+    server = load_server(allowed_root)
+    target = "../outside.txt" if variant == "relative" else str(tmp_path / "outside.txt")
+    # TODO(secor): use the argument name the tool reads its path from, and add any other required arguments.
+    arguments = {"path": target}
+{{?mcp1}}    async with create_connected_server_and_client_session(server) as client:
+{{?mcp1}}        result = await client.call_tool("{{toolName}}", arguments)
+{{?mcp2}}    async with Client(server) as client:
+{{?mcp2}}        result = await client.call_tool("{{toolName}}", arguments)
+{{?fastmcp}}    async with Client(server) as client:
+{{?fastmcp}}        try:
+{{?fastmcp}}            result = await client.call_tool("{{toolName}}", arguments)
+{{?fastmcp}}        except ToolError:
+{{?fastmcp}}            result = None
+    if result is None:
+        rejected, text = True, ""
+    else:
+        rejected = bool(getattr(result, "isError", False) or getattr(result, "is_error", False))
+        text = " ".join(str(getattr(item, "text", "")) for item in (getattr(result, "content", None) or []))
+    assert MARKER not in text
+    assert rejected

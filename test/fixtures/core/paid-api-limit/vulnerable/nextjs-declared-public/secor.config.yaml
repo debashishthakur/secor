@@ -1,0 +1,4 @@
+version: 1
+public:
+  - route: "POST /api/chat"
+    reason: "Public demo chatbot on the landing page"

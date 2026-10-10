@@ -1,0 +1,19 @@
+# SECOR's own configuration: the test fixtures, demo MCP servers and Probe test apps are deliberately vulnerable.
+version: 1
+packs: auto
+exclude:
+  - "test/fixtures/**"
+  - "test/inventory/fixtures/**"
+  - "test/connect/servers/**"
+  - "test/connect/hooks/**"
+public: []
+auth:
+  guards: []
+  ownershipHelpers: []
+rateLimit:
+  helpers: []
+mcp:
+  deployment: auto
+gate:
+  failOn: critical
+network: true

@@ -1,0 +1,22 @@
+# SECOR test for api/missing-ownership: {{method}} {{path}}
+# User B requesting user A's record must get 403 or 404.
+import re
+
+from fastapi.testclient import TestClient
+
+# TODO(secor): import the FastAPI app that includes this route.
+from {{importPath}} import {{handlerExport}} as app
+
+# TODO(secor): create a record owned by user A and get a token for user B
+# (or override your current-user dependency with app.dependency_overrides).
+RECORD_OF_USER_A = "TODO-record-id-of-user-A"
+USER_B_HEADERS = {"Authorization": "Bearer TODO-token-of-user-B"}
+
+client = TestClient(app)
+
+
+def test_user_b_cannot_get_user_a_record():
+    # TODO(secor): if the ID travels in the query or the body instead of the path, send it there.
+    path = re.sub(r":\w+", RECORD_OF_USER_A, "{{path}}")
+    response = client.request("{{method}}", path, headers=USER_B_HEADERS)
+    assert response.status_code in (403, 404)

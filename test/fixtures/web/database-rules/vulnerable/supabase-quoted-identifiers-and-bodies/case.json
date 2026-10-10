@@ -1,0 +1,13 @@
+{
+  "rule": "web/database-rules",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "supabase/migrations/20240501000000_quoted.sql",
+      "line": 2,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

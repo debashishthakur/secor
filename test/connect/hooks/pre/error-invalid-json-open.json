@@ -1,0 +1,21 @@
+{
+  "description": "Invalid stdin, failMode open: no output, ledger error, hooks.log",
+  "steps": [
+    {
+      "phase": "pre",
+      "rawInput": "{\"tool_name\": \"mcp__github__x\", __FAKE_OPENAI__",
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "error",
+            "codes": [
+              "error"
+            ]
+          }
+        ],
+        "hooksLog": true
+      }
+    }
+  ]
+}

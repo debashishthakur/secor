@@ -1,0 +1,28 @@
+{
+  "description": "Invalid stdin, failMode closed: deny SECOR unavailable",
+  "scopes": "version: 1\ndefaults:\n  failMode: closed\n",
+  "steps": [
+    {
+      "phase": "pre",
+      "rawInput": "not json at all",
+      "expect": {
+        "stdout": {
+          "hookSpecificOutput": {
+            "hookEventName": "PreToolUse",
+            "permissionDecision": "deny",
+            "permissionDecisionReason": "SECOR unavailable"
+          }
+        },
+        "ledger": [
+          {
+            "decision": "error",
+            "codes": [
+              "error"
+            ]
+          }
+        ],
+        "hooksLog": true
+      }
+    }
+  ]
+}

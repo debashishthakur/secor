@@ -1,0 +1,5 @@
+{ "rule": "mcp/tool-scope", "expect": [
+  { "severity": "critical", "file": "src/server.ts", "line": 13, "advisory": false },
+  { "severity": "high", "file": "src/server.ts", "line": 18, "advisory": false },
+  { "severity": "critical", "file": "src/server.ts", "line": 23, "advisory": false }
+], "exact": true, "git": false }

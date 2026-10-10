@@ -1,0 +1,25 @@
+{
+  "rule": "web/database-rules",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "supabase/migrations/20240301000000_posts.sql",
+      "line": 8,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "supabase/migrations/20240301000000_posts.sql",
+      "line": 12,
+      "advisory": false
+    },
+    {
+      "severity": "high",
+      "file": "supabase/migrations/20240301000000_posts.sql",
+      "line": 19,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

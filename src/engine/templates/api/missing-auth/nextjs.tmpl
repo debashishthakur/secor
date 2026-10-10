@@ -1,0 +1,52 @@
+// SECOR test for api/missing-auth: {{method}} {{path}}
+// A call without a session must be rejected (401 or 403).
+import { describe, expect, it } from "vitest";
+import { {{handlerExport}} as handler } from "{{importPath}}";
+
+// TODO(secor): mock your auth library so that there is no session, for example:
+// vi.mock("@/auth", () => ({ auth: async () => null }));
+
+describe("api/missing-auth: {{method}} {{path}}", () => {
+{{?route}}  it("rejects a request without credentials", async () => {
+{{?route}}    // TODO(secor): replace any :params in the URL and in params with real values.
+{{?route}}    const call = handler as unknown as (req: Request, ctx: { params: Promise<Record<string, string>> }) => Promise<Response>;
+{{?route}}    const res = await call(new Request("http://localhost{{path}}", { method: "{{method}}" }), { params: Promise.resolve({}) });
+{{?route}}    expect([401, 403]).toContain(res.status);
+{{?route}}  });
+{{?pages}}  it("rejects a request without credentials", async () => {
+{{?pages}}    // TODO(secor): put real values for any :params in query.
+{{?pages}}    const call = handler as unknown as (req: unknown, res: unknown) => Promise<void> | void;
+{{?pages}}    const res = fakeResponse();
+{{?pages}}    await call({ method: "{{method}}", url: "{{path}}", query: {}, headers: {}, cookies: {} }, res);
+{{?pages}}    expect([401, 403]).toContain(res.statusCode);
+{{?pages}}  });
+{{?action}}  it("refuses to run without a session", async () => {
+{{?action}}    // TODO(secor): pass the arguments this server action expects. If it returns an error instead of throwing, assert on that value.
+{{?action}}    const call = handler as unknown as (...args: unknown[]) => Promise<unknown>;
+{{?action}}    await expect(call()).rejects.toThrow();
+{{?action}}  });
+});
+{{?pages}}
+{{?pages}}function fakeResponse() {
+{{?pages}}  return {
+{{?pages}}    statusCode: 200,
+{{?pages}}    headers: {} as Record<string, unknown>,
+{{?pages}}    status(code: number) {
+{{?pages}}      this.statusCode = code;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    setHeader(name: string, value: unknown) {
+{{?pages}}      this.headers[name.toLowerCase()] = value;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    json() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    send() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    end() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}  };
+{{?pages}}}

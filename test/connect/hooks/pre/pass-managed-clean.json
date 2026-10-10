@@ -1,0 +1,38 @@
+{
+  "description": "Managed server, allowed tool, clean arguments: pass (no output, ledger pass)",
+  "scopes": "version: 1\nservers:\n  github:\n    tools: [search_code, create_issue]\n",
+  "managed": [
+    "github"
+  ],
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__github__create_issue",
+        "tool_input": {
+          "repo": "acme/app",
+          "title": "Fix the login page"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "pass",
+            "server": "github",
+            "tool": "create_issue",
+            "phase": "pre",
+            "codes": [],
+            "argChars": 48
+          }
+        ]
+      }
+    }
+  ]
+}

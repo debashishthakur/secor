@@ -1,0 +1,27 @@
+{
+  "description": "Invalid stdin, failMode closed: deny SECOR unavailable",
+  "scopes": "version: 1\ndefaults:\n  failMode: closed\n",
+  "steps": [
+    {
+      "phase": "protect",
+      "rawInput": "{",
+      "expect": {
+        "stdout": {
+          "decision": "deny",
+          "reasonIncludes": [
+            "SECOR unavailable"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "error",
+            "codes": [
+              "error"
+            ]
+          }
+        ],
+        "hooksLog": true
+      }
+    }
+  ]
+}

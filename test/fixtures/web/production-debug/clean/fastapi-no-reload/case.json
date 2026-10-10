@@ -1,0 +1,6 @@
+{
+  "rule": "web/production-debug",
+  "expect": [],
+  "exact": true,
+  "git": false
+}

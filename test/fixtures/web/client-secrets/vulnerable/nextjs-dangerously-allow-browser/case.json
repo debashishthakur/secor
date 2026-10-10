@@ -1,0 +1,19 @@
+{
+  "rule": "web/client-secrets",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "components/Assistant.tsx",
+      "line": 7,
+      "advisory": false
+    },
+    {
+      "severity": "critical",
+      "file": "lib/claude.ts",
+      "line": 3,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

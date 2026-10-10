@@ -1,0 +1,11 @@
+{
+  "name": "fx",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "4.21.2",
+    "@prisma/client": "6.6.0",
+    "zod": "3.24.2",
+    "joi": "17.13.3"
+  }
+}

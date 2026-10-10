@@ -1,0 +1,19 @@
+{
+  "rule": "web/security-headers",
+  "expect": [
+    {
+      "severity": "low",
+      "file": "public/_headers",
+      "line": 1,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "public/_headers",
+      "line": 1,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

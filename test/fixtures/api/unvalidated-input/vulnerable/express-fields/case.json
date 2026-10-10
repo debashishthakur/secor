@@ -1,0 +1,16 @@
+{
+  "rule": "api/unvalidated-input",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "src/app.js",
+      "line": 9
+    },
+    {
+      "severity": "medium",
+      "file": "src/app.js",
+      "line": 15
+    }
+  ],
+  "exact": true
+}

@@ -1,0 +1,5 @@
+{ "rule": "core/error-leakage", "expect": [
+  { "severity": "medium", "file": "main.py", "line": 14 },
+  { "severity": "medium", "file": "main.py", "line": 20 },
+  { "severity": "medium", "file": "main.py", "line": 28 }
+] }

@@ -1,0 +1,18 @@
+{
+  "rule": "core/hallucinated-package",
+  "net": "net.json",
+  "expect": [
+    {
+      "severity": "high",
+      "advisory": false,
+      "file": "package.json",
+      "line": 7
+    },
+    {
+      "severity": "high",
+      "advisory": false,
+      "file": "package.json",
+      "line": 10
+    }
+  ]
+}

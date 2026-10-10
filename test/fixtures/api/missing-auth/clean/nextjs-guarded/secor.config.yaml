@@ -1,0 +1,6 @@
+version: 1
+public:
+  - route: "GET /api/health"
+    reason: "Uptime probe"
+  - action: "app/newsletter.ts#subscribe"
+    reason: "Newsletter signup form"

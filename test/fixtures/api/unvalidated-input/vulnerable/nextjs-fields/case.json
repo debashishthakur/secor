@@ -1,0 +1,21 @@
+{
+  "rule": "api/unvalidated-input",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "app/actions.ts",
+      "line": 9
+    },
+    {
+      "severity": "medium",
+      "file": "app/api/comments/route.ts",
+      "line": 9
+    },
+    {
+      "severity": "medium",
+      "file": "pages/api/feedback.ts",
+      "line": 6
+    }
+  ],
+  "exact": true
+}

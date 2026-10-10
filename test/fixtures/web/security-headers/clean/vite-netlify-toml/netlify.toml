@@ -1,0 +1,10 @@
+[build]
+  command = "vite build"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; frame-ancestors 'none'"
+    Strict-Transport-Security = "max-age=63072000"
+    X-Content-Type-Options = "nosniff"

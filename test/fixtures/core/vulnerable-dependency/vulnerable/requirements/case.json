@@ -1,0 +1,16 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "requirements.txt",
+      "line": 2
+    },
+    {
+      "severity": "critical",
+      "file": "requirements.txt",
+      "line": 4
+    }
+  ],
+  "net": "net.json"
+}

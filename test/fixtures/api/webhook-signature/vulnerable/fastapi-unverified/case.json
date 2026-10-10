@@ -1,0 +1,11 @@
+{
+  "rule": "api/webhook-signature",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 8
+    }
+  ],
+  "exact": true
+}

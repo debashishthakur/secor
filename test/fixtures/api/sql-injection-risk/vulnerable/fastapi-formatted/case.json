@@ -1,0 +1,26 @@
+{
+  "rule": "api/sql-injection-risk",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 12
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 17
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 18
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 20
+    }
+  ],
+  "exact": true
+}

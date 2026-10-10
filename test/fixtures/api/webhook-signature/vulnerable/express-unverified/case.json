@@ -1,0 +1,11 @@
+{
+  "rule": "api/webhook-signature",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "src/app.js",
+      "line": 6
+    }
+  ],
+  "exact": true
+}

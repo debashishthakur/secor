@@ -1,0 +1,34 @@
+{
+  "description": "A server's never list replaces defaults.never: personal data is allowed for it",
+  "scopes": "version: 1\nservers:\n  crm:\n    never: [secret]\n",
+  "managed": [
+    "crm"
+  ],
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__crm__add_contact",
+        "tool_input": {
+          "email": "__FAKE_EMAIL__"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "pass",
+            "server": "crm",
+            "codes": []
+          }
+        ]
+      }
+    }
+  ]
+}

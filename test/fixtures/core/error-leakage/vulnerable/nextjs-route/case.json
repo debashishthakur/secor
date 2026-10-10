@@ -1,0 +1,4 @@
+{ "rule": "core/error-leakage", "expect": [
+  { "severity": "medium", "file": "app/api/chat/route.ts", "line": 8 },
+  { "severity": "medium", "file": "app/api/chat/route.ts", "line": 16 }
+] }

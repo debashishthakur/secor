@@ -1,0 +1,4 @@
+version: 1
+public:
+  - route: "GET /status"
+    reason: "Load balancer health check"

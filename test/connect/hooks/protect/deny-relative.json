@@ -1,0 +1,31 @@
+{
+  "description": "A relative path resolved against cwd",
+  "steps": [
+    {
+      "phase": "protect",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "Write",
+        "tool_input": {
+          "file_path": "secor.config.yaml",
+          "content": "x"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "hookSpecificOutput": {
+            "hookEventName": "PreToolUse",
+            "permissionDecision": "deny",
+            "permissionDecisionReason": "SECOR policy files are edited by humans only. Ask the user to make this change."
+          }
+        },
+        "ledger": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{ "rule": "mcp/local-binding", "expect": [{ "severity": "high", "file": "src/server.ts", "line": 17, "advisory": false, "evidenceIncludes": "(a) listens on all interfaces; (b) no Origin or Host validation" }], "exact": true, "git": false }

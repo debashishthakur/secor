@@ -1,0 +1,21 @@
+{
+  "rule": "api/missing-auth",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "app/actions.ts",
+      "line": 5
+    },
+    {
+      "severity": "critical",
+      "file": "app/api/notes/route.ts",
+      "line": 3
+    },
+    {
+      "severity": "critical",
+      "file": "pages/api/profile.ts",
+      "line": 3
+    }
+  ],
+  "exact": true
+}

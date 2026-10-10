@@ -1,0 +1,1 @@
+{ "rule": "mcp/session-handling", "expect": [{ "severity": "high", "file": "src/server.ts", "line": 17, "advisory": false, "evidenceIncludes": "Math.random" }], "exact": true, "git": false }

@@ -1,0 +1,45 @@
+{
+  "description": "Unmanaged + secret + personal data: one ask with every reason, in order",
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__random__send",
+        "tool_input": {
+          "to": "__FAKE_EMAIL__",
+          "key": "__FAKE_ANTHROPIC__"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "decision": "ask",
+          "reasonIncludes": [
+            "unvetted",
+            "class:secret",
+            "class:personal_data"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "ask",
+            "codes": [
+              "unvetted",
+              "class:secret",
+              "class:personal_data"
+            ],
+            "classes": [
+              "secret",
+              "personal_data"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

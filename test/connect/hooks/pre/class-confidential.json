@@ -1,0 +1,43 @@
+{
+  "description": "Text matching confidential.patterns: class:confidential",
+  "scopes": "version: 1\nconfidential:\n  patterns: [\"PROJECT-ORION-[0-9]+\"]\nservers:\n  github: {}\n",
+  "managed": [
+    "github"
+  ],
+  "steps": [
+    {
+      "phase": "pre",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PreToolUse",
+        "tool_name": "mcp__github__create_issue",
+        "tool_input": {
+          "title": "Status of PROJECT-ORION-7"
+        },
+        "tool_use_id": "toolu_01"
+      },
+      "expect": {
+        "stdout": {
+          "decision": "ask",
+          "reasonIncludes": [
+            "class:confidential"
+          ]
+        },
+        "ledger": [
+          {
+            "decision": "ask",
+            "codes": [
+              "class:confidential"
+            ],
+            "classes": [
+              "confidential"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

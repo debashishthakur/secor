@@ -1,0 +1,22 @@
+{
+  "description": "Invalid stdin, failMode open: no output, ledger error (phase post)",
+  "steps": [
+    {
+      "phase": "post",
+      "rawInput": "[1,2",
+      "expect": {
+        "stdout": null,
+        "ledger": [
+          {
+            "decision": "error",
+            "phase": "post",
+            "codes": [
+              "error"
+            ]
+          }
+        ],
+        "hooksLog": true
+      }
+    }
+  ]
+}

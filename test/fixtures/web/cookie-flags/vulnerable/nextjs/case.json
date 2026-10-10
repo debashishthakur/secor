@@ -1,0 +1,19 @@
+{
+  "rule": "web/cookie-flags",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "app/api/login/route.ts",
+      "line": 6,
+      "advisory": false
+    },
+    {
+      "severity": "medium",
+      "file": "app/api/login/route.ts",
+      "line": 8,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

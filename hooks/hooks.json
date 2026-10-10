@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "^mcp__.*", "hooks": [{ "type": "command", "command": "secor hook pre", "timeout": 5 }] },
+      { "matcher": "Edit|Write|MultiEdit", "hooks": [{ "type": "command", "command": "secor hook protect", "timeout": 5 }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "^(mcp__.*|Read)$", "hooks": [{ "type": "command", "command": "secor hook post", "timeout": 5 }] }
+    ]
+  }
+}

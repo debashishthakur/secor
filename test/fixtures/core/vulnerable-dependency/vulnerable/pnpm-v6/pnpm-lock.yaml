@@ -1,0 +1,25 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  minimist:
+    specifier: ^1.2.0
+    version: 1.2.5
+
+devDependencies:
+  ajv:
+    specifier: ^6.0.0
+    version: 6.10.0
+
+packages:
+
+  /ajv@6.10.0:
+    resolution: {integrity: sha512-IIII}
+    dev: true
+
+  /minimist@1.2.5:
+    resolution: {integrity: sha512-JJJJ}
+    dev: false

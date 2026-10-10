@@ -1,0 +1,16 @@
+{
+  "rule": "api/missing-auth",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "src/app.js",
+      "line": 10
+    },
+    {
+      "severity": "critical",
+      "file": "src/routes/notes.js",
+      "line": 4
+    }
+  ],
+  "exact": true
+}

@@ -1,0 +1,4 @@
+{ "rule": "mcp/session-handling", "expect": [
+  { "severity": "high", "file": "src/server.ts", "line": 17, "advisory": true, "evidenceIncludes": "sessionUsers.get" },
+  { "severity": "high", "file": "src/server.ts", "line": 26, "advisory": false, "evidenceIncludes": "loginCounter" }
+], "exact": true, "git": false }

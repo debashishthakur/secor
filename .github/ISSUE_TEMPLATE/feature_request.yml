@@ -1,0 +1,21 @@
+name: Rule or feature request
+description: A new check, a new framework, or a change to behaviour
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: The mistake or risk you want SECOR to catch, or the workflow you want supported.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed check or behaviour
+      description: When it should fire, when it should stay quiet, and the severity you'd expect.
+  - type: input
+    id: source
+    attributes:
+      label: Reference
+      placeholder: "OWASP / MCP spec / CWE link, if any"

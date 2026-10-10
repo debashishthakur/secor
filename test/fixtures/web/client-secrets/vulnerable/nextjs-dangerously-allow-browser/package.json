@@ -1,0 +1,9 @@
+{
+  "name": "fx",
+  "dependencies": {
+    "next": "15.0.0",
+    "react": "19.0.0",
+    "openai": "4.60.0",
+    "@anthropic-ai/sdk": "0.30.0"
+  }
+}

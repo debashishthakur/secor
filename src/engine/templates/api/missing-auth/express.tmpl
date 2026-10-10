@@ -1,0 +1,16 @@
+// SECOR test for api/missing-auth: {{method}} {{path}}
+// A request without credentials must get 401 or 403.
+{{?vitest}}import { describe, expect, it } from "vitest";
+{{?jest}}import { describe, expect, it } from "@jest/globals";
+import request from "supertest";
+// TODO(secor): export the Express app from this module without calling app.listen(), so supertest can use it.
+import { {{handlerExport}} as app } from "{{importPath}}";
+
+describe("api/missing-auth: {{method}} {{path}}", () => {
+  it("rejects a request without credentials", async () => {
+    // TODO(secor): replace any :params in the path with real values.
+    const method = "{{method}}".toLowerCase() as "get";
+    const res = await request(app)[method]("{{path}}");
+    expect([401, 403]).toContain(res.status);
+  });
+});

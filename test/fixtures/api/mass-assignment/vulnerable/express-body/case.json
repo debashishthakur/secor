@@ -1,0 +1,26 @@
+{
+  "rule": "api/mass-assignment",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "src/app.ts",
+      "line": 10
+    },
+    {
+      "severity": "high",
+      "file": "src/app.ts",
+      "line": 15
+    },
+    {
+      "severity": "high",
+      "file": "src/app.ts",
+      "line": 21
+    },
+    {
+      "severity": "high",
+      "file": "src/app.ts",
+      "line": 27
+    }
+  ],
+  "exact": true
+}

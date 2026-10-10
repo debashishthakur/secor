@@ -1,0 +1,31 @@
+{
+  "rule": "web/cookie-flags",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "src/app.js",
+      "line": 6,
+      "advisory": false
+    },
+    {
+      "severity": "medium",
+      "file": "src/app.js",
+      "line": 9,
+      "advisory": false
+    },
+    {
+      "severity": "medium",
+      "file": "src/app.js",
+      "line": 11,
+      "advisory": false
+    },
+    {
+      "severity": "medium",
+      "file": "src/app.js",
+      "line": 16,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

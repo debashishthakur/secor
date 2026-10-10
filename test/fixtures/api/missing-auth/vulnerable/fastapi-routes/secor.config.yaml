@@ -1,0 +1,4 @@
+version: 1
+public:
+  - route: "GET /health"
+    reason: "Uptime probe"

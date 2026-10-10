@@ -1,0 +1,19 @@
+{
+  "rule": "web/production-debug",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "package.json",
+      "line": 6,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "vite.config.ts",
+      "line": 6,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

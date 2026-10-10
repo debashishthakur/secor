@@ -1,0 +1,17 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "pnpm-lock.yaml",
+      "line": 21,
+      "evidenceIncludes": "axios@0.21.1: GHSA-cph5-m8f7-6c5x"
+    },
+    {
+      "severity": "medium",
+      "file": "pnpm-lock.yaml",
+      "line": 24
+    }
+  ],
+  "net": "net.json"
+}

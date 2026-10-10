@@ -1,0 +1,10 @@
+import express from "express";
+import auth from "./auth/auth";
+import * as guards from "./auth/guards";
+import { middlewares } from "./auth/guards";
+const app = express();
+app.get("/me", auth.required, (req, res) => res.json({}));
+app.get("/feed", auth.optional, (req, res) => res.json([]));
+app.delete("/admin/x", guards.requireAdmin, (req, res) => res.end());
+app.post("/admin/y", middlewares.mustBeAdmin, (req, res) => res.end());
+export default app;

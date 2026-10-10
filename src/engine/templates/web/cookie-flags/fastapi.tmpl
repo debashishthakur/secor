@@ -1,0 +1,19 @@
+# SECOR test for web/cookie-flags (FastAPI + pytest): the session cookie must carry HttpOnly, Secure and SameSite.
+import re
+
+from fastapi.testclient import TestClient
+
+# TODO(secor): import the module that creates the FastAPI app.
+from {{importPath}} import app
+
+client = TestClient(app)
+
+
+def test_session_cookie_flags():
+    # TODO(secor): replace :params in the path and send the credentials or body this route needs to set the cookie.
+    res = client.request("{{method}}", "{{path}}", follow_redirects=False)
+    set_cookie = "\n".join(res.headers.get_list("set-cookie"))
+    assert set_cookie, "no Set-Cookie header"
+    assert re.search(r";\s*httponly", set_cookie, re.I)
+    assert re.search(r";\s*secure", set_cookie, re.I)
+    assert re.search(r";\s*samesite=(lax|strict|none)", set_cookie, re.I)

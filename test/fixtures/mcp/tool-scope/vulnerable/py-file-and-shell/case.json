@@ -1,0 +1,8 @@
+{ "rule": "mcp/tool-scope", "expect": [
+  { "severity": "high", "file": "server.py", "line": 14, "advisory": false, "evidenceIncludes": "open(" },
+  { "severity": "critical", "file": "server.py", "line": 21, "advisory": false },
+  { "severity": "high", "file": "server.py", "line": 28, "advisory": false, "evidenceIncludes": "os.remove" },
+  { "severity": "critical", "file": "server.py", "line": 35, "advisory": false },
+  { "severity": "high", "file": "server.py", "line": 42, "advisory": false, "evidenceIncludes": "read_text" },
+  { "severity": "high", "file": "server.py", "line": 48, "advisory": false }
+], "exact": true, "git": false }

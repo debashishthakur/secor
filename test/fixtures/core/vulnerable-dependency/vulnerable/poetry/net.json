@@ -1,0 +1,81 @@
+{
+  "POST https://api.osv.dev/v1/querybatch": {
+    "status": 200,
+    "body": {
+      "results": [
+        {
+          "vulns": [
+            {
+              "id": "PYSEC-2021-66"
+            },
+            {
+              "id": "GHSA-g3rq-g295-4j3m"
+            }
+          ]
+        },
+        {}
+      ]
+    }
+  },
+  "GET https://api.osv.dev/v1/vulns/PYSEC-2021-66": {
+    "status": 200,
+    "body": {
+      "id": "PYSEC-2021-66",
+      "summary": "Test advisory PYSEC-2021-66",
+      "modified": "2024-01-01T00:00:00Z",
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "PyPI",
+            "name": "jinja2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.11.3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "GET https://api.osv.dev/v1/vulns/GHSA-g3rq-g295-4j3m": {
+    "status": 200,
+    "body": {
+      "id": "GHSA-g3rq-g295-4j3m",
+      "summary": "Test advisory GHSA-g3rq-g295-4j3m",
+      "modified": "2024-01-01T00:00:00Z",
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "PyPI",
+            "name": "Jinja2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.11.3"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "severity": "MODERATE"
+      }
+    }
+  }
+}

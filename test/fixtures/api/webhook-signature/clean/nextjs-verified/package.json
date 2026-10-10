@@ -1,0 +1,12 @@
+{
+  "name": "fx",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "next": "15.3.0",
+    "react": "19.1.0",
+    "stripe": "17.7.0",
+    "svix": "1.62.0",
+    "@clerk/nextjs": "6.12.0"
+  }
+}

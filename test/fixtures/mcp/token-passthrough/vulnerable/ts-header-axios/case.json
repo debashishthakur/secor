@@ -1,0 +1,4 @@
+{ "rule": "mcp/token-passthrough", "expect": [
+  { "severity": "critical", "file": "src/server.ts", "line": 14, "advisory": false },
+  { "severity": "critical", "file": "src/server.ts", "line": 24, "advisory": false }
+], "exact": true, "git": false }

@@ -1,0 +1,16 @@
+{
+  "rule": "api/missing-auth",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "app/main.py",
+      "line": 14
+    },
+    {
+      "severity": "critical",
+      "file": "app/routers/items.py",
+      "line": 6
+    }
+  ],
+  "exact": true
+}

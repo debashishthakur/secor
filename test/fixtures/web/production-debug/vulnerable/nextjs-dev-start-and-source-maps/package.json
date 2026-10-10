@@ -1,0 +1,12 @@
+{
+  "name": "fx",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "start": "next dev -p 3000"
+  },
+  "dependencies": {
+    "next": "15.0.0",
+    "react": "19.0.0"
+  }
+}

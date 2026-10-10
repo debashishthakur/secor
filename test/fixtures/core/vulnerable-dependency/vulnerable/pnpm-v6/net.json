@@ -1,0 +1,48 @@
+{
+  "POST https://api.osv.dev/v1/querybatch": {
+    "status": 200,
+    "body": {
+      "results": [
+        {
+          "vulns": [
+            {
+              "id": "GHSA-xvch-5gv4-984h"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "GET https://api.osv.dev/v1/vulns/GHSA-xvch-5gv4-984h": {
+    "status": 200,
+    "body": {
+      "id": "GHSA-xvch-5gv4-984h",
+      "summary": "Test advisory GHSA-xvch-5gv4-984h",
+      "modified": "2024-01-01T00:00:00Z",
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "minimist"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.2.6"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "severity": "CRITICAL"
+      }
+    }
+  }
+}

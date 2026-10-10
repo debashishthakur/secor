@@ -1,0 +1,25 @@
+{
+  "rule": "web/security-headers",
+  "expect": [
+    {
+      "severity": "low",
+      "file": "vercel.json",
+      "line": 2,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "vercel.json",
+      "line": 2,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "vercel.json",
+      "line": 2,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

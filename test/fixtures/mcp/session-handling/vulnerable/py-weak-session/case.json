@@ -1,0 +1,4 @@
+{ "rule": "mcp/session-handling", "expect": [
+  { "severity": "high", "file": "server.py", "line": 19, "advisory": false, "evidenceIncludes": "random.randint" },
+  { "severity": "high", "file": "server.py", "line": 27, "advisory": true, "evidenceIncludes": "sessions.get" }
+], "exact": true, "git": false }

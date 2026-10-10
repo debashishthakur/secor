@@ -1,0 +1,18 @@
+{
+  "name": "demo-app",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@demo/ui": "^1.0.0",
+    "shared-utils": "workspace:*",
+    "local-lib": "file:../local-lib",
+    "linked": "link:./linked",
+    "from-git": "git+https://github.com/example/from-git.git",
+    "gh-shorthand": "example/gh-shorthand#main",
+    "tarball": "https://example.com/tarball-1.0.0.tgz",
+    "lodash-alias": "npm:lodash@^4.17.21"
+  }
+}

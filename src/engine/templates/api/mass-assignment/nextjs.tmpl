@@ -1,0 +1,61 @@
+// SECOR test for api/mass-assignment: {{method}} {{path}}
+// Sending role: "admin" must leave the stored role unchanged.
+import { describe, expect, it } from "vitest";
+import { {{handlerExport}} as handler } from "{{importPath}}";
+
+// TODO(secor): mock your auth library so the session is a normal (non-admin) user, for example:
+// vi.mock("@/auth", () => ({ auth: async () => ({ user: { id: "user-a" } }) }));
+
+async function storedRole(): Promise<unknown> {
+  // TODO(secor): load the record this call created or updated (for example with your ORM client) and return its role.
+  return undefined;
+}
+
+describe("api/mass-assignment: {{method}} {{path}}", () => {
+{{?route}}  it("ignores a role sent by the client", async () => {
+{{?route}}    // TODO(secor): replace any :params in the URL and in params, and add the fields this endpoint requires.
+{{?route}}    const call = handler as unknown as (req: Request, ctx: { params: Promise<Record<string, string>> }) => Promise<Response>;
+{{?route}}    const hasBody = !["GET", "HEAD"].includes("{{method}}");
+{{?route}}    const req = new Request("http://localhost{{path}}", { method: "{{method}}", headers: { "content-type": "application/json" }, body: hasBody ? JSON.stringify({ role: "admin" }) : undefined });
+{{?route}}    await call(req, { params: Promise.resolve({}) });
+{{?route}}    expect(await storedRole()).not.toBe("admin");
+{{?route}}  });
+{{?pages}}  it("ignores a role sent by the client", async () => {
+{{?pages}}    // TODO(secor): add the fields this endpoint requires.
+{{?pages}}    const call = handler as unknown as (req: unknown, res: unknown) => Promise<void> | void;
+{{?pages}}    await call({ method: "{{method}}", url: "{{path}}", query: {}, headers: { "content-type": "application/json" }, cookies: {}, body: { role: "admin" } }, fakeResponse());
+{{?pages}}    expect(await storedRole()).not.toBe("admin");
+{{?pages}}  });
+{{?action}}  it("ignores a role sent by the client", async () => {
+{{?action}}    // TODO(secor): pass the arguments this server action expects; if it takes an object, pass { role: "admin" } instead.
+{{?action}}    const call = handler as unknown as (...args: unknown[]) => Promise<unknown>;
+{{?action}}    const form = new FormData();
+{{?action}}    form.set("role", "admin");
+{{?action}}    await call(form).catch(() => undefined);
+{{?action}}    expect(await storedRole()).not.toBe("admin");
+{{?action}}  });
+});
+{{?pages}}
+{{?pages}}function fakeResponse() {
+{{?pages}}  return {
+{{?pages}}    statusCode: 200,
+{{?pages}}    headers: {} as Record<string, unknown>,
+{{?pages}}    status(code: number) {
+{{?pages}}      this.statusCode = code;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    setHeader(name: string, value: unknown) {
+{{?pages}}      this.headers[name.toLowerCase()] = value;
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    json() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    send() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}    end() {
+{{?pages}}      return this;
+{{?pages}}    },
+{{?pages}}  };
+{{?pages}}}

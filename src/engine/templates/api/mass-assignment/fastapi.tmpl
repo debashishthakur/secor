@@ -1,0 +1,22 @@
+# SECOR test for api/mass-assignment: {{method}} {{path}}
+# Sending role: "admin" must leave the stored role unchanged.
+from fastapi.testclient import TestClient
+
+# TODO(secor): import the FastAPI app that includes this route.
+from {{importPath}} import {{handlerExport}} as app
+
+# TODO(secor): get a token for a normal (non-admin) user, or override your current-user dependency.
+AUTH_HEADERS = {"Authorization": "Bearer TODO-token-of-a-normal-user"}
+
+client = TestClient(app)
+
+
+def stored_role():
+    # TODO(secor): load the record this request created or updated and return its role.
+    return None
+
+
+def test_role_sent_by_client_is_ignored():
+    # TODO(secor): replace any :params in the path and add the fields this endpoint requires.
+    client.request("{{method}}", "{{path}}", json={"role": "admin", "is_admin": True}, headers=AUTH_HEADERS)
+    assert stored_role() != "admin"

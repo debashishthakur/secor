@@ -1,0 +1,11 @@
+{
+  "rule": "core/vulnerable-dependency",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": "yarn.lock",
+      "line": 5
+    }
+  ],
+  "net": "net.json"
+}

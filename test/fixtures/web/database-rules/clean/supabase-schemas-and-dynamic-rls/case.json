@@ -1,0 +1,6 @@
+{
+  "rule": "web/database-rules",
+  "expect": [],
+  "exact": true,
+  "git": false
+}

@@ -1,0 +1,36 @@
+{
+  "rule": "api/missing-ownership",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/actions.ts",
+      "line": 9,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "app/api/documents/[id]/route.ts",
+      "line": 8,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "app/api/notes/[id]/route.ts",
+      "line": 10,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "app/api/projects/[id]/route.ts",
+      "line": 10,
+      "advisory": true
+    },
+    {
+      "severity": "high",
+      "file": "pages/api/invoices/[id].ts",
+      "line": 9,
+      "advisory": true
+    }
+  ],
+  "exact": true
+}

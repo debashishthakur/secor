@@ -1,0 +1,12 @@
+{
+  "name": "fx",
+  "private": true,
+  "dependencies": {
+    "express": "4.19.2",
+    "helmet": "7.1.0",
+    "react": "18.3.1"
+  },
+  "devDependencies": {
+    "vite": "5.4.0"
+  }
+}

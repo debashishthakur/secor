@@ -1,0 +1,12 @@
+{
+  "name": "fx",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "4.21.2",
+    "pg": "8.14.1",
+    "knex": "3.1.0",
+    "@prisma/client": "6.6.0",
+    "sequelize": "6.37.7"
+  }
+}

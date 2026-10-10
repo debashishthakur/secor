@@ -1,0 +1,31 @@
+{
+  "rule": "web/security-headers",
+  "expect": [
+    {
+      "severity": "low",
+      "file": "next.config.js",
+      "line": 1,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "next.config.js",
+      "line": 1,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "next.config.js",
+      "line": 1,
+      "advisory": false
+    },
+    {
+      "severity": "low",
+      "file": "next.config.js",
+      "line": 1,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

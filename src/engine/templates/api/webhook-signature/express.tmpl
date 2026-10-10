@@ -1,0 +1,16 @@
+// SECOR test for api/webhook-signature: {{method}} {{path}}
+// An unsigned webhook request must get 400.
+{{?vitest}}import { describe, expect, it } from "vitest";
+{{?jest}}import { describe, expect, it } from "@jest/globals";
+import request from "supertest";
+// TODO(secor): export the Express app from this module without calling app.listen(), so supertest can use it.
+import { {{handlerExport}} as app } from "{{importPath}}";
+
+describe("api/webhook-signature: {{method}} {{path}}", () => {
+  it("rejects an unsigned webhook request", async () => {
+    const method = "{{method}}".toLowerCase() as "post";
+    // No signature header (stripe-signature, svix-signature, x-hub-signature-256, ...) is sent.
+    const res = await request(app)[method]("{{path}}").set("Content-Type", "application/json").send(JSON.stringify({ type: "test.event", data: {} }));
+    expect(res.status).toBe(400);
+  });
+});

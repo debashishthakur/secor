@@ -1,0 +1,6 @@
+{
+  "rule": "web/security-headers",
+  "expect": [],
+  "exact": true,
+  "git": false
+}

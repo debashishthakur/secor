@@ -1,0 +1,6 @@
+{
+  "rule": "web/cookie-flags",
+  "expect": [],
+  "exact": true,
+  "git": false
+}

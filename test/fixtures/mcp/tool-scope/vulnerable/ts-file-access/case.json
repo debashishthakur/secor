@@ -1,0 +1,4 @@
+{ "rule": "mcp/tool-scope", "expect": [
+  { "severity": "high", "file": "src/server.ts", "line": 13, "advisory": false, "evidenceIncludes": "readFile" },
+  { "severity": "high", "file": "src/server.ts", "line": 21, "advisory": false, "evidenceIncludes": "writeFileSync" }
+], "exact": true, "git": false }

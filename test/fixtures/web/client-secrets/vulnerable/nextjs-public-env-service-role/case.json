@@ -1,0 +1,19 @@
+{
+  "rule": "web/client-secrets",
+  "expect": [
+    {
+      "severity": "critical",
+      "file": ".env.local",
+      "line": 3,
+      "advisory": false
+    },
+    {
+      "severity": "critical",
+      "file": ".env.local",
+      "line": 6,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}

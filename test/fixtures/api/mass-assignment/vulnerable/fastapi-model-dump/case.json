@@ -1,0 +1,16 @@
+{
+  "rule": "api/mass-assignment",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 13
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 22
+    }
+  ],
+  "exact": true
+}

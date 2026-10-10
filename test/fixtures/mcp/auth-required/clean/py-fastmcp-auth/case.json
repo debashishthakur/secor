@@ -1,0 +1,1 @@
+{ "rule": "mcp/auth-required", "expect": [], "exact": true, "git": false }

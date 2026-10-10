@@ -1,0 +1,11 @@
+{
+  "rule": "api/sql-injection-risk",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/api/orders/route.ts",
+      "line": 6
+    }
+  ],
+  "exact": true
+}

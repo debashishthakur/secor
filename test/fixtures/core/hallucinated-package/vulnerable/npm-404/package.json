@@ -1,0 +1,12 @@
+{
+  "name": "demo-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.19.2",
+    "expres-validator-pro": "^1.0.0"
+  },
+  "devDependencies": {
+    "@acme-ai/llm-helperz": "^0.2.0"
+  }
+}

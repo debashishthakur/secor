@@ -1,0 +1,11 @@
+{
+  "rule": "api/middleware-only-auth",
+  "expect": [
+    {
+      "severity": "medium",
+      "file": "middleware.ts",
+      "line": 4
+    }
+  ],
+  "exact": true
+}

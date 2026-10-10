@@ -1,0 +1,4 @@
+version: 1
+public:
+  - mcpServer: "src/server.ts"
+    reason: "Public documentation search, no user data"

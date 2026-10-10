@@ -1,0 +1,16 @@
+{
+  "rule": "api/cors-credentials",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "app/admin.py",
+      "line": 5
+    },
+    {
+      "severity": "high",
+      "file": "app/main.py",
+      "line": 6
+    }
+  ],
+  "exact": true
+}

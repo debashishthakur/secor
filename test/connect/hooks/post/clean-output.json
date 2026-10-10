@@ -1,0 +1,32 @@
+{
+  "description": "Clean MCP output: no output, no ledger, fingerprints stored under the server",
+  "scopes": "version: 1\nservers:\n  github:\n    tools: [search_code, create_issue]\n",
+  "managed": [
+    "github"
+  ],
+  "steps": [
+    {
+      "phase": "post",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PostToolUse",
+        "tool_name": "mcp__github__search_code",
+        "tool_input": {
+          "q": "x"
+        },
+        "tool_use_id": "toolu_01",
+        "tool_response": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [],
+        "fingerprintSources": [
+          "github"
+        ]
+      }
+    }
+  ]
+}

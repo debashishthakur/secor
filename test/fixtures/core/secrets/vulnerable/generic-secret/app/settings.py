@@ -1,0 +1,3 @@
+DEBUG = False
+OAUTH_CLIENT_ID = "web-portal"
+OAUTH_CLIENT_SECRET = "__FAKE_GENERIC__"

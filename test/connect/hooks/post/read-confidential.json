@@ -1,0 +1,38 @@
+{
+  "description": "Read of a confidential path: fingerprints stored with source file:<path>",
+  "scopes": "version: 1\nconfidential:\n  paths: [\"~/secret-notes/**\"]\n",
+  "files": {
+    "${HOME}/secret-notes/plan.md": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+  },
+  "steps": [
+    {
+      "phase": "post",
+      "input": {
+        "session_id": "sess-1",
+        "transcript_path": "${HOME}/.claude/projects/p/sess-1.jsonl",
+        "cwd": "${PROJECT}",
+        "permission_mode": "default",
+        "hook_event_name": "PostToolUse",
+        "tool_name": "Read",
+        "tool_input": {
+          "file_path": "${HOME}/secret-notes/plan.md"
+        },
+        "tool_use_id": "toolu_01",
+        "tool_response": {
+          "type": "text",
+          "file": {
+            "filePath": "${HOME}/secret-notes/plan.md",
+            "content": "Quarterly plan: migrate the billing service to the new cluster, retire the legacy queue, and move the nightly export to the shared storage bucket before the audit window opens in March."
+          }
+        }
+      },
+      "expect": {
+        "stdout": null,
+        "ledger": [],
+        "fingerprintSources": [
+          "file:${HOME}/secret-notes/plan.md"
+        ]
+      }
+    }
+  ]
+}

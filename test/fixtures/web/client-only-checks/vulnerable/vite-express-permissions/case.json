@@ -1,0 +1,13 @@
+{
+  "rule": "web/client-only-checks",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "src/components/PostList.tsx",
+      "line": 6,
+      "advisory": true
+    }
+  ],
+  "exact": true,
+  "git": false
+}

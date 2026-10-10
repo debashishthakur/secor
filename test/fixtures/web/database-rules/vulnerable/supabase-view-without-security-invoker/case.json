@@ -1,0 +1,19 @@
+{
+  "rule": "web/database-rules",
+  "expect": [
+    {
+      "severity": "high",
+      "file": "supabase/migrations/20240401000000_views.sql",
+      "line": 9,
+      "advisory": false
+    },
+    {
+      "severity": "high",
+      "file": "supabase/migrations/20240401000000_views.sql",
+      "line": 14,
+      "advisory": false
+    }
+  ],
+  "exact": true,
+  "git": false
+}
