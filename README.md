@@ -3,6 +3,7 @@
 [![CI](https://github.com/debashishthakur/secor/actions/workflows/ci.yml/badge.svg)](https://github.com/debashishthakur/secor/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%E2%89%A520-5fa04e?logo=node.js&logoColor=white)](package.json)
+[![M8ven Score](https://m8ven.ai/badge/mcp/debashishthakur-secor-11yvps?v=2b15c27e6b90e19a8232cb11136f0f7c&variant=verified)](https://m8ven.ai/mcp/debashishthakur-secor-11yvps?s=readme)
 
 SECOR is a local security tool for developers who build with AI.
 
